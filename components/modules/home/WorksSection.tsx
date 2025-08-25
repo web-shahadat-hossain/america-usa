@@ -179,7 +179,7 @@ const WorksSection = () => {
             </div>
             <div className="w-full lg:w-1/2">
               <TextBox
-                title="Log In & Paste the Product URL"
+                title="once login paste details in the search bar"
                 description="Once logged in, paste the link in search bar"
               />
             </div>
@@ -192,7 +192,7 @@ const WorksSection = () => {
           >
             <div className="flex justify-end w-full lg:w-1/2 lg:pr-5">
               <TextBox
-                title="Submit your request for preview"
+                title="once login paste details in the search bar"
                 description="After pasting, submit your request. That will be sent to our admin"
               />
             </div>
@@ -274,7 +274,7 @@ const WorksSection = () => {
 
             <div className="w-full lg:w-1/2">
               <TextBox
-                title="Admin approves & Confirms the order"
+                title="once login paste details in the search bar"
                 description="Our admin team evaluates your request & verifies the details"
                 className="pl-0 lg:pl-12"
               />
@@ -288,7 +288,7 @@ const WorksSection = () => {
           >
             <div className="flex justify-end w-full lg:w-1/2 lg:pr-5">
               <TextBox
-                title="We Purchase & Handle International Shipping"
+                title="We Forward Your Parcels from the USA"
                 description="After pasting, submit your request. That will be sent to our admin"
               />
             </div>
@@ -352,7 +352,8 @@ const WorksSection = () => {
 
             <div className="w-full lg:w-1/2 lg:pl-14">
               <TextBox
-                title="Delivered to your door in Bangladesh"
+                title="We Forward Your Parcels from the USA
+"
                 description="Our admin team evaluates your request & verifies the details"
               />
             </div>

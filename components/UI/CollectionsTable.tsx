@@ -40,21 +40,31 @@ const CollectionsTable = () => {
         {/* ===== Mobile Cards (smaller than md) ===== */}
         <div className="md:hidden grid gap-3">
           {products.map((item, idx) => {
-            const isActive = idx === defaultActiveRow; // মোবাইলে ডিফল্টটাই হাইলাইট
+            const isActive = activeRow === idx;
+
             return (
               <div
                 key={idx}
-                className={`w-full rounded-2xl border p-4 flex items-start justify-between gap-3
+                role="button"
+                tabIndex={0}
+                onClick={() => setActiveRow(idx)}
+                onTouchStart={() => setActiveRow(idx)}
+                onKeyDown={(e) =>
+                  (e.key === "Enter" || e.key === " ") && setActiveRow(idx)
+                }
+                className={`relative w-full rounded-2xl border p-4 pr-16 flex items-start justify-between gap-3 overflow-visible
                   ${
                     isActive
                       ? "border-[#FF740C] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
                       : "border-[#D0D5DD] bg-white"
                   }`}
               >
+                {/* Left content */}
                 <div className="flex-1 min-w-0">
                   <div className="text-[18px] font-semibold text-[#0F1728] truncate">
                     {item.name}
                   </div>
+
                   <div className="mt-2 flex flex-wrap gap-2">
                     {item.tags.map((t, i) => (
                       <span
@@ -70,13 +80,15 @@ const CollectionsTable = () => {
                       </span>
                     ))}
                   </div>
+
                   <div className="mt-3 text-[18px] font-medium text-[#0F1728]">
                     {item.price}
                   </div>
                 </div>
 
+                {/* Arrow button */}
                 <button
-                  className={`shrink-0 w-10 h-10 rounded-full border flex items-center justify-center
+                  className={`absolute right-3 top-4 w-10 h-10 rounded-full border flex items-center justify-center transition-all
                     ${
                       isActive
                         ? "bg-[#FF740C]/80 border-[#FF740C] -rotate-45 text-white"
@@ -86,6 +98,25 @@ const CollectionsTable = () => {
                 >
                   <GoArrowRight size={18} />
                 </button>
+
+                {/* Floating preview (mobile) */}
+                <div
+                  className={`pointer-events-none absolute right-2 bottom-2
+                              w-[160px] h-[110px] rounded-xl overflow-hidden
+                              shadow-[0_6px_18px_rgba(0,0,0,0.15)] bg-white transition
+                              ${
+                                isActive
+                                  ? "opacity-100 scale-100 -rotate-[5deg]"
+                                  : "opacity-0 scale-95"
+                              }`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 rounded-xl ring-1 ring-black/5" />
+                </div>
               </div>
             );
           })}
@@ -106,6 +137,7 @@ const CollectionsTable = () => {
             <tbody>
               {products.map((item, idx) => {
                 const isActive = activeRow === idx;
+
                 return (
                   <tr
                     key={idx}
@@ -165,7 +197,7 @@ const CollectionsTable = () => {
                               : "opacity-0 scale-95"
                           }`}
                       >
-                        <div className="relative w-[230px] h-[155px] rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.15)] bg-white">
+                        <div className="relative w-[230px] h-[155px] rounded-2xl overflow-hidden shadow-[0_8px_24px_rgbaa(0,0,0,0.15)] bg-white">
                           <img
                             src={item.image}
                             alt={item.name}

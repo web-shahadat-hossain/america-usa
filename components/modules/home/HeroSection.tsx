@@ -190,13 +190,13 @@ export default function HeroSection() {
               {/* Shipping Form */}
               <div className="w-full flex flex-row justify-center items-center mx-auto my-6 md:my-10">
                 <div
-                  className="w-full min-h-[100px] md:min-h-[120px] lg:w-[90%] xl:w-[64%] lg:min-h-[240px] px-4 md:px-6 lg:px-10 flex flex-row justify-center items-center self-end relative bg-cover bg-center"
+                  className="w-full min-h-[110px] md:min-h-[120px] lg:w-[90%] xl:w-[64%] lg:min-h-[240px] px-4 md:px-6 lg:px-10 flex flex-row justify-center items-center self-end relative bg-cover bg-center"
                   style={{ backgroundImage: "url('/images/img_union.svg')" }}
                 >
                   <div className="flex flex-row justify-start items-center w-full mr-[5px] sm:mr-[7px] md:mr-[10px] lg:mr-[14px] ml-[5px] sm:ml-[7px] md:ml-[10px] lg:ml-[14px]">
                     <div className="flex flex-col justify-start items-center w-full ml-[5px] sm:ml-[10px] md:ml-[15px] lg:ml-[20px]">
                       {/* Tab Navigation */}
-                      <div className="flex flex-row justify-between items-center w-[80%] sm:w-[70%] md:w-[60%] mt-[-12px] md:mt-[-15px]">
+                      <div className="flex flex-row justify-between items-center w-[80%] sm:w-[70%] md:w-[60%] mt-[-5px] md:mt-[-15px]">
                         <button
                           onClick={() => handleTabChange("ship")}
                           className={`text-[10px] md:text-[16px] text-[#FF5C00] font-semibold cursor-pointer ${
@@ -220,13 +220,13 @@ export default function HeroSection() {
                       </div>
 
                       {/* Form Title */}
-                      <p className="text-[8px] md:text-[16px] font-medium mb-1 md:mb-2 mt-4 md:mt-8 text-left text-global-1 self-start">
+                      <p className="text-[8px] md:text-[16px] font-medium mb-1 md:mb-2 mt-2 md:mt-8 text-left text-global-1 self-start">
                         Enter the Product description for Approval
                       </p>
 
                       {/* Search Form */}
                       <div className="flex flex-row justify-start items-center w-full mt-[10px] md:mt-[15px]">
-                        <div className="flex flex-row w-full border border-[#969696] rounded-[20px] md:rounded-[24px] overflow-hidden">
+                        <div className="flex h-[30px] lg:h-full flex-row w-full border border-[#969696] rounded-[20px] md:rounded-[24px] overflow-hidden">
                           {/* Input */}
                           <div className="flex flex-row items-center flex-1 px-[10px] md:px-[13px] lg:px-[18px]">
                             <Image
@@ -245,13 +245,19 @@ export default function HeroSection() {
                           </div>
                           {/* Button */}
                           <Button
-                            className="text-[12px] md:text-[13px] lg:text-[18px] font-medium text-center text-global-10 
-             bg-[#FF5C00] px-[16px] md:px-[22px] lg:px-[30px] py-[7px] md:py-[9px] lg:py-[12px] 
-             border-l border-[#5C5858] 
-             !rounded-none !rounded-tr-[20px] md:!rounded-tr-[24px] !rounded-br-[20px] md:!rounded-br-[24px] text-white"
+                            className=" 
+     lg:h-full min-w-[96px]
+
+    grid place-items-center              /* ✅ perfect center */
+    text-[12px] md:text-[13px] lg:text-[18px] font-medium leading-none
+    bg-[#FF5C00] px-3 md:px-[22px] lg:px-[30px] py-0
+    border-l border-[#5C5858]
+    !rounded-none md:!rounded-tr-[24px] !rounded-br-[20px] md:!rounded-br-[24px]
+    text-white
+  "
                             variant="primary"
                           >
-                            <span className="text-[inherit] font-medium">
+                            <span className="leading-none block lg:pt-1  h-[25px] lg:h-full">
                               Search
                             </span>
                           </Button>
