@@ -87,7 +87,8 @@ const Testimonials = () => {
 
   return (
     <div className="px-4">
-      <div className="relative border max-w-7xl mx-auto rounded-[50px] my-10">
+      <div className="relative  max-w-7xl mx-auto rounded-[50px] my-10">
+        <div className="w-[80%] h-full hidden lg:block border absolute top-0 left-1/2 -translate-x-1/2 rounded-3xl" />
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

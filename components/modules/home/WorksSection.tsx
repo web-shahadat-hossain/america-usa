@@ -127,6 +127,10 @@ const WorksSection = () => {
           >
             How AmericaToBD works
           </motion.h1>
+          <p className="mx-auto  max-w-xl text-center text-sm text-[var(--color-stone)] md:text-base">
+            Hard-to-Find US Products, Delivered to Bangladesh Without the
+            Overpricing, Headaches, or Hassle
+          </p>
         </motion.div>
 
         {/* content */}

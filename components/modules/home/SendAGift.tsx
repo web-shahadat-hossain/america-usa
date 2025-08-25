@@ -14,11 +14,11 @@ const SendAGift = () => {
         </div>
 
         <div>
-          <div>
+          <div id="best-seller">
             <BestSeller />
           </div>
 
-          <div>
+          <div id="collections">
             <Collections />
           </div>
         </div>

@@ -31,93 +31,161 @@ const products = [
 ];
 
 const CollectionsTable = () => {
-  const [activeRow, setActiveRow] = useState<number | null>(null);
+  const defaultActiveRow = 1; // Dior Sauvage
+  const [activeRow, setActiveRow] = useState<number | null>(defaultActiveRow);
 
   return (
-    <div className="py-10 max-w-7xl mx-auto px-4 xl:px-0">
-      <div className="overflow-x-auto xl:overflow-hidden scrollbar-thin scrollbar-thumb-gray-300">
-        <table className="table w-full min-w-[700px]">
-          {/* Table Head */}
-          <thead>
-            <tr className="text-gray-500 text-sm font-medium">
-              <th className="w-1/4">Name</th>
-              <th className="w-1/3">Tags</th>
-              <th className="w-1/6">Price</th>
-              <th className="w-1/6"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {products.map((item, idx) => {
-              const isActive = activeRow === idx;
-
-              return (
-                <tr
-                  key={idx}
-                  onMouseEnter={() => setActiveRow(idx)}
-                  onMouseLeave={() => setActiveRow(null)}
-                  onClick={() => setActiveRow(isActive ? null : idx)}
-                  className="relative cursor-pointer transition"
-                >
-                  {/* Name */}
-                  <td className="font-semibold text-md">{item.name}</td>
-
-                  {/* Tags */}
-                  <td>
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className={`px-3 py-1 rounded-full text-xs border transition 
+    <section className="bg-[#EDF1F4] mt-6 rounded-md">
+      <div className="max-w-7xl mx-auto px-4 xl:px-0 py-6">
+        {/* ===== Mobile Cards (smaller than md) ===== */}
+        <div className="md:hidden grid gap-3">
+          {products.map((item, idx) => {
+            const isActive = idx === defaultActiveRow; // মোবাইলে ডিফল্টটাই হাইলাইট
+            return (
+              <div
+                key={idx}
+                className={`w-full rounded-2xl border p-4 flex items-start justify-between gap-3
+                  ${
+                    isActive
+                      ? "border-[#FF740C] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                      : "border-[#D0D5DD] bg-white"
+                  }`}
+              >
+                <div className="flex-1 min-w-0">
+                  <div className="text-[18px] font-semibold text-[#0F1728] truncate">
+                    {item.name}
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {item.tags.map((t, i) => (
+                      <span
+                        key={i}
+                        className={`px-3 py-[6px] rounded-full text-xs border
                           ${
                             isActive
-                              ? "bg-[#FF5C00] text-[#FFFFFF] border-[#FF5C00]"
-                              : "bg-white text-gray-700 border-gray-700"
+                              ? "bg-[#FF740C] text-white border-[#FF740C]"
+                              : "bg-white text-[#344054] border-[#D0D5DD]"
                           }`}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-3 text-[18px] font-medium text-[#0F1728]">
+                    {item.price}
+                  </div>
+                </div>
+
+                <button
+                  className={`shrink-0 w-10 h-10 rounded-full border flex items-center justify-center
+                    ${
+                      isActive
+                        ? "bg-[#FF740C]/80 border-[#FF740C] -rotate-45 text-white"
+                        : "border-[#D0D5DD] text-[#0F1728]"
+                    }`}
+                  aria-label="Open"
+                >
+                  <GoArrowRight size={18} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ===== Desktop Table (md and up) ===== */}
+        <div className="hidden md:block overflow-x-auto md:overflow-visible">
+          <table className="w-full min-w-[760px]">
+            <thead>
+              <tr className="text-[#667085] text-sm">
+                <th className="text-left font-medium py-4">Name</th>
+                <th className="text-left font-medium py-4">Tags</th>
+                <th className="text-left font-medium py-4">Price</th>
+                <th className="py-4 pr-5"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {products.map((item, idx) => {
+                const isActive = activeRow === idx;
+                return (
+                  <tr
+                    key={idx}
+                    onMouseEnter={() => setActiveRow(idx)}
+                    onMouseLeave={() => setActiveRow(defaultActiveRow)}
+                    className="relative group border-t border-[#465967]/60"
+                  >
+                    <td className="py-6 text-[20px] leading-tight font-semibold text-[#0F1728]">
+                      {item.name}
+                    </td>
+
+                    <td className="py-6">
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className={`px-3 py-[6px] rounded-full text-xs transition
+                              ${
+                                isActive
+                                  ? "bg-[#FF740C] text-white border border-[#FF740C]"
+                                  : "bg-white text-[#344054] border border-[#D0D5DD]"
+                              }`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </td>
+
+                    <td className="py-6 text-[20px] text-[#0F1728]">
+                      {item.price}
+                    </td>
+
+                    <td className="py-6 pr-5">
+                      <div className="flex justify-end">
+                        <button
+                          className={`w-11 h-11 rounded-full border transition-all duration-300 flex items-center justify-center
+                            ${
+                              isActive
+                                ? "bg-[#FF740C]/80 border-[#FF740C] rotate-[-45deg] text-white"
+                                : "bg-transparent border-[#D0D5DD] text-[#0F1728] hover:border-[#FF740C]"
+                            }`}
+                          aria-label="Open"
                         >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </td>
+                          <GoArrowRight size={20} />
+                        </button>
+                      </div>
+                    </td>
 
-                  {/* Price */}
-                  <td className="text-lg text-gray-800">{item.price}</td>
-
-                  {/* Arrow Button */}
-                  <td className="flex justify-end">
-                    <button
-                      className={`w-10 h-10 flex items-center justify-center rounded-full border transition-all duration-300
-                        ${
-                          isActive
-                            ? "bg-[#FF740C80] border-orange-500 -rotate-45"
-                            : "hover:bg-transparent text-[#000000]"
-                        }`}
-                    >
-                      <GoArrowRight size={20} />
-                    </button>
-                  </td>
-
-                  {/* Hover Preview Card */}
-                  <td className="absolute right-20 top-1/2 -translate-y-1/2 hidden xl:table-cell z-50">
-                    <div
-                      className={`relative w-48 h-32 rounded-xl overflow-hidden transition duration-300
-                        ${isActive ? "opacity-100 scale-100 -rotate-5" : "opacity-0 scale-95"}`}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="relative w-full h-full object-cover"
-                      />
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    {/* Preview card (desktop only) */}
+                    <td className="!p-0">
+                      <div
+                        className={`pointer-events-none hidden xl:block absolute right-24 top-1/2 -translate-y-1/2 transition duration-300
+                          ${
+                            isActive
+                              ? "opacity-100 scale-100 -rotate-[6deg]"
+                              : "opacity-0 scale-95"
+                          }`}
+                      >
+                        <div className="relative w-[230px] h-[155px] rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.15)] bg-white">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/5" />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+              <tr>
+                <td colSpan={4} className="border-t border-[#D0D5DD]/60"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

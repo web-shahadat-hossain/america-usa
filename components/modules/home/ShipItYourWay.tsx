@@ -35,7 +35,7 @@ const ShipItYourWay = () => {
     },
   ];
   return (
-    <section className="relative w-full py-16 lg:py-24">
+    <section className="relative w-full pb-10">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,19 +52,19 @@ const ShipItYourWay = () => {
               What we offer
             </p>
           </motion.div>
-          <div className="max-w-4xl px-4 text-center sm:px-6">
+          <div className="max-w-4xl text-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-2xl font-bold leading-tight text-transparent sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-[#838383] via-[#000000CC] to-[#838383] bg-clip-text py-10"
+              className="text-2xl font-bold leading-tight text-transparent sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-[#838383] via-[#000000CC] to-[#838383] bg-clip-text py-4"
             >
               Ship It Your Way
             </motion.h1>
           </div>
         </motion.div>
-        <p className="mx-auto mt-2 max-w-xl text-center text-sm text-[var(--color-stone)] md:text-base">
+        <p className="mx-auto  max-w-xl text-center text-sm text-[var(--color-stone)] md:text-base">
           Choose the option that works best for you
         </p>
       </div>

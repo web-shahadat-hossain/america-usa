@@ -18,12 +18,12 @@ const BestSeller = () => {
 
         <div className="w-[102px] h-[32px] bg-transparent hover:bg-[#FF740C] hover:text-[#FFFFFF] center rounded-full border duration-300 flex items-center justify-center gap-2 ease-in-out cursor-pointer">
           <p className="text-[12px] font-medium">View all</p>
-          <PlayIcon></PlayIcon>
+          <PlayIcon />
         </div>
       </div>
 
       <div>
-        <BestSellerCards></BestSellerCards>
+        <BestSellerCards />
       </div>
     </div>
   );

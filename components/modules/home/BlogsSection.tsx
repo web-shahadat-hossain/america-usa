@@ -69,7 +69,7 @@ const BlogCard = ({
       animate={inView ? "visible" : "hidden"}
       variants={fadeInUp}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center`}
+      className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center `}
     >
       {!reverse && (
         <motion.div
@@ -149,46 +149,48 @@ const BlogsSection = () => {
   });
 
   return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.8 }}
-      className="py-8 sm:py-10 md:py-16 mx-auto max-w-[1200px] lg:py-20 px-4 sm:px-6 md:px-8 lg:px-[50px]"
-    >
-      {/* Section Header */}
-      <motion.div
-        className="flex-col mb-16 sm:mb-20 lg:mb-24 xl:mb-28 center gap-y-4 sm:gap-y-6 lg:gap-y-8"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+    <section className="bg-[#EDF1F4]">
+      <motion.section
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        className="py-8 sm:py-10  md:py-16 mx-auto max-w-[1200px] lg:py-20 px-4 sm:px-6 md:px-8 lg:px-[50px]"
       >
+        {/* Section Header */}
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="w-[120px] h-[40px] sm:w-[136px] sm:h-[44px] lg:w-[160px] lg:h-[52px] bg-white center rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+          className="flex-col mb-16 sm:mb-20 lg:mb-24 xl:mb-28 center gap-y-4 sm:gap-y-6 lg:gap-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="text-base sm:text-lg lg:text-xl font-medium text-[#465967]">
-            Blogs
-          </p>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="w-[120px] h-[40px] sm:w-[136px] sm:h-[44px] lg:w-[160px] lg:h-[52px] bg-white center rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <p className="text-base sm:text-lg lg:text-xl font-medium text-[#465967]">
+              Blogs
+            </p>
+          </motion.div>
+          <motion.h1 className="max-w-[90%] sm:max-w-[636px] w-full text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center title_md radial_text_gradient">
+            Discover Our Latest Updates
+          </motion.h1>
         </motion.div>
-        <motion.h1 className="max-w-[90%] sm:max-w-[636px] w-full text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center title_md radial_text_gradient">
-          Discover Our Latest Updates
-        </motion.h1>
-      </motion.div>
 
-      {/* Blogs Grid */}
-      <div className="space-y-12 sm:space-y-16 md:space-y-24 lg:space-y-[120px]">
-        {blogsData.map((blog, index) => (
-          <BlogCard
-            key={index}
-            {...blog}
-            index={index}
-            reverse={index % 2 !== 0}
-          />
-        ))}
-      </div>
-    </motion.section>
+        {/* Blogs Grid */}
+        <div className="space-y-12 sm:space-y-16 md:space-y-24 lg:space-y-[120px]">
+          {blogsData.map((blog, index) => (
+            <BlogCard
+              key={index}
+              {...blog}
+              index={index}
+              reverse={index % 2 !== 0}
+            />
+          ))}
+        </div>
+      </motion.section>
+    </section>
   );
 };
 
