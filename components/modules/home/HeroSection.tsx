@@ -175,18 +175,15 @@ export default function HeroSection() {
               </div>
 
               {/* Heading */}
+
               <motion.div
                 variants={itemVariants}
-                className="w-full lg:max-w-[986px] lg:mx-auto mt-0 md:mt-2 px-2 md:px-4 text-center"
+                className="w-full max-w-[1161px] mt-4 sm:mt-6 lg:mt-8 px-4"
               >
-                <h1 className="text-[22px] sm:text-[32px] md:text-[42px] lg:text-[52px] font-bold leading-[28px] sm:leading-[38px] md:leading-[45px] lg:leading-[49px] relative inline-block">
-                  <span className="bg-[radial-gradient(circle_at_center,#000000cc_60%,#737373fa_100%,#ffffff_40%)] bg-clip-text text-transparent drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)]">
-                    Ship from Cart to Bangladesh
-                  </span>
-                  <br className="hidden lg:block" />
-                  <span className="pl-0 md:pl-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.35)] block md:inline-block">
-                    Hassle-Free
-                  </span>
+                <h1 className="pb-2 text-2xl font-bold leading-tight text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl radial_text_gradient sm:pb-4 sm:leading-normal">
+                  Ship from Cart to Bangladesh
+                  <br />
+                  <span>Hassle-Free</span>
                 </h1>
               </motion.div>
 
